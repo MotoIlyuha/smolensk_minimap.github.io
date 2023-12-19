@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/smolensk_minimap.github.io/static/css/main.838057fd.css",
+    "main.js": "/smolensk_minimap.github.io/static/js/main.cd4de0ce.js",
+    "static/media/sobor.jpg": "/smolensk_minimap.github.io/static/media/sobor.e01753a33e04ab870db8.jpg",
+    "static/media/category.png": "/smolensk_minimap.github.io/static/media/category.4082b57f72133b4cda44.png",
+    "index.html": "/smolensk_minimap.github.io/index.html",
+    "main.838057fd.css.map": "/smolensk_minimap.github.io/static/css/main.838057fd.css.map",
+    "main.cd4de0ce.js.map": "/smolensk_minimap.github.io/static/js/main.cd4de0ce.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.838057fd.css",
+    "static/js/main.cd4de0ce.js"
+  ]
+}
