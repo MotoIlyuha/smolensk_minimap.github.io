@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&display=swap");
+
+/* Переменные */
+:root {
+  --white: #ffffff;
+  --body-background-color: #f4f4f8;
+  --navigation-background-color: #030303;
+  --navigation-link-color: #9e9fa4;
+  --navigation-link-hover-background-color: #313239;
+  --navigation-item-height: 45px;
+  --navigation-item-border-radius: 5px;
+  --navigation-item-tooltip-color: #6b6b6b;
+  --navigation-search-background-color: #2c2a30;
+  --navigation-search-background-focus-color: #313239;
+  --navigation-search-color: var(--white);
+  --navigation-search-icon-size: 25px;
+  --navigation-collapse-trigger-color: #408bff;
+}
+
+/* Общие стили */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Навигационный контейнер */
+.navigation-container {
+  position: relative;
+  width: 350px;
+}
+
+/* Кнопка сворачивания навигации */
+.navigation-collapse-trigger {
+  bottom: 0;
+  position: absolute;
+  right: -10px;
+  top: 0;
+  width: 20px;
+}
+
+/* Кнопка сворачивания - круг */
+.navigation-collapse-trigger__orb {
+  position: absolute;
+  width: var(--navigation-collapse-trigger-orb-size);
+  height: var(--navigation-collapse-trigger-orb-size);
+  border-radius: var(--navigation-collapse-trigger-orb-size);
+  background-color: var(--navigation-collapse-trigger-color);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translate(calc(-50% + 2px), 100px) scale(0);
+  transition: all 0.2s ease-out;
+  transition-delay: 0.1s;
+}
+
+.navigation-collapse-trigger__orb:hover {
+  cursor: pointer;
+}
+
+.navigation-collapse-trigger__orb > svg {
+  stroke: var(--white);
+  width: 80%;
+  height: auto;
+}
+
+.navigation-link--collapsed > .navigation-collapse-trigger__orb > svg {
+  transform: rotate(180deg);
+}
+
+.navigation-collapse-trigger:hover .navigation-collapse-trigger__orb {
+  transform: translate(calc(-50% + 2px), 100px) scale(1);
+}
+
+.navigation-collapse-trigger:hover ~ .navigation::before {
+  opacity: 1;
+}
+
+/* Навигация */
+.navigation {
+  background-color: var(--navigation-background-color);
+  color: var(--white);
+  width: 350px;
+  height: 100%;
+  min-height: 650px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.navigation::before {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--navigation-collapse-trigger-color), 0) 0%,
+    rgba(var(--navigation-collapse-trigger-color), 1) 5%,
+    rgba(var(--navigation-collapse-trigger-color), 1) 95%,
+    rgba(var(--navigation-collapse-trigger-color), 0) 100%
+  );
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  right: -3px;
+  top: 0;
+  width: 2px;
+  content: "";
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  transition-delay: 0.1s;
+}
+
+.navigation .logout {
+  margin-top: auto;
+}
+
+/* Логотип навигации */
+.navigation-logo {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin: 8px 8px 30px;
+}
+
+.navigation-logo__icon {
+  min-width: 32px;
+}
+
+.navigation-logo__name {
+ margin: 8px;
+  font-size: x-large;
+}
+
+.navigation-logo svg {
+  margin-right: 8px;
+}
+
+/* Поиск в навигации */
+.navigation-search {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.navigation-search__icon {
+  height: var(--navigation-search-icon-size);
+  left: calc((var(--navigation-item-height) - var(--navigation-search-icon-size)) / 2);
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  top: calc((var(--navigation-item-height) - var(--navigation-search-icon-size)) / 2);
+  transition: all 0.1s ease-out;
+  width: var(--navigation-search-icon-size);
+  z-index: 1;
+}
+
+.navigation-link--collapsed .navigation-search__icon {
+  left: 12px;
+}
+
+.navigation-search__input {
+  background-color: var(--navigation-search-background-color);
+  border-radius: var(--navigation-item-border-radius);
+  border: 0;
+  color: var(--navigation-search-color);
+  font-family: inherit;
+  font-size: inherit;
+  height: var(--navigation-item-height);
+  line-height: var(--navigation-item-height);
+  outline: none;
+  padding-left: calc(var(--navigation-search-icon-size) * 2);
+  transition: all 0.2s ease-out;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.navigation-search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-x' %3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E")
+    no-repeat center center/cover;
+  cursor: pointer;
+  height: 20px;
+  position: relative;
+  right: calc((var(--navigation-item-height) - var(--navigation-search-icon-size)) / 2);
+  width: 20px;
+}
+
+.navigation-link--collapsed .navigation-search__input:not(:focus)::-webkit-search-cancel-button {
+  display: none;
+}
+
+.navigation-search__input:focus {
+  padding-left: calc((var(--navigation-item-height) - var(--navigation-search-icon-size)) / 2);
+  background-color: var(--navigation-search-background-focus-color);
+  border-radius: var(--navigation-item-border-radius);
+}
+
+.navigation-search__input:focus + svg {
+  opacity: 0;
+  transform: translateX(-20%);
+  z-index: 2;
+}
+
+/* Ссылка в навигации */
+.navigation-link {
+  display: block;
+  color: var(--navigation-link-color);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  height: var(--navigation-item-height);
+  line-height: var(--navigation-item-height);
+  border-radius: var(--navigation-item-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+  white-space: nowrap;
+}
+
+.navigation-link__icon {
+  min-width: 32px;
+}
+
+.navigation-link__name {
+  margin-left: 12px;
+}
+
+.navigation-link--collapsed .navigation-link__name {
+  padding: 0.5em;
+  line-height: 1;
+  border-radius: calc(var(--navigation-item-border-radius) / 2);
+  color: var(--navigation-item-tooltip-color);
+  transition: transform 0.2s ease-out;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+  position: absolute;
+  left: 48px;
+}
+
+.navigation-link:hover {
+  background-color: var(--navigation-link-hover-background-color);
+  color: var(--white);
+}
+
+.navigation-link--collapsed:hover .navigation-link__name {
+  position: absolute;
+  opacity: 1 !important;
+  font-size: 0.875rem;
+  transform: translateX(4px);
+  background: var(--white);
+  left: 60px;
+}

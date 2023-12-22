@@ -15,11 +15,69 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <script>
-    $(function () {
-        $('a[href*=#]').on('click', function (e) {
-            e.preventDefault();
-            $('html, body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-        });
+    const trigger = document.getElementById("js_navigation-collapse-trigger");
+    const navigationContainer = document.getElementById("js_navigation-container");
+    const navigationModifierClass = "navigation-container--collapsed";
+
+    const animationDuration = 400;
+
+    const widthChange = anime.timeline({
+        autoplay: false,
+        easing: "easeInOutBack",
+    });
+
+    widthChange
+        .add({
+            targets: navigationContainer,
+            width: 80,
+            duration: animationDuration,
+        })
+        .add(
+            {
+                targets: ".js_navigation-item-name",
+                opacity: [1, 0],
+                duration: animationDuration / 2,
+            },
+            `-=${animationDuration}`
+        );
+
+    let navigationIsCollapsed = false;
+
+    trigger.addEventListener("click", function () {
+        navigationIsCollapsed = !navigationIsCollapsed;
+
+        if (navigationIsCollapsed) {
+            navigationContainer.classList.add(navigationModifierClass);
+        } else {
+            navigationContainer.classList.remove(navigationModifierClass);
+        }
+
+        if (widthChange.began) {
+            widthChange.reverse();
+            if (widthChange.progress === 100 && widthChange.direction === "reverse") {
+                widthChange.completed = false;
+            }
+        }
+
+        if (widthChange.paused) {
+            widthChange.play();
+        }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth' // Добавляем плавную анимацию прокрутки
+          });
+        }
+      });
     });
 </script>
 </body>

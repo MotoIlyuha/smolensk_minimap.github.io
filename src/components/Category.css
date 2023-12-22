@@ -1,0 +1,45 @@
+/* Style for the category buttons */
+.category-btn {
+  width: 100%; /* full width of the parent */
+  max-width: 400px; /* maximum width */
+  height: 50px; /* fixed height */
+  border-radius: 8px;
+  border: none;/* removing the border */
+  cursor: pointer; /* changing cursor to indicate clickability */
+  display: flex; /* using flex to align the text and icon */
+  align-items: center; /* vertically centering the content */
+  justify-content: space-between; /* spacing between text and symbol */
+  padding: 0 10px; /* some padding on the sides */
+  margin: 8px 0; /* some margin on the top and bottom */
+}
+
+/* Style for the category list items */
+.category-list {
+  list-style-type: none; /* removing list markers */
+  padding: 0; /* removing default padding */
+  margin: 0; /* removing default margin */
+}
+
+/* Style for individual list items */
+.category-list li {
+  padding: 5px 10px; /* some padding */
+  display: block; /* making sure it's a block to fill width */
+  transition: background-color 0.3s; /* smooth background transition */
+}
+
+.category-list li:hover {
+  background-color: #f0f0f0; /* hover effect */
+}
+
+/* Style for the icon if it exists */
+.icon {
+  width: 20px; /* fixed width */
+  height: 20px; /* fixed height */
+  margin-right: 10px; /* space between icon and text */
+}
+
+/* Container for the entire accordion, with scrolling */
+.accordion-container {
+  max-height: max-content; /* or whatever height you prefer */
+  overflow-y: auto; /* adds a vertical scrollbar when necessary */
+}
