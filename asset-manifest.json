@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/smolensk_minimap.github.io/static/css/main.838057fd.css",
-    "main.js": "/smolensk_minimap.github.io/static/js/main.cd4de0ce.js",
-    "static/media/sobor.jpg": "/smolensk_minimap.github.io/static/media/sobor.e01753a33e04ab870db8.jpg",
-    "static/media/category.png": "/smolensk_minimap.github.io/static/media/category.4082b57f72133b4cda44.png",
-    "index.html": "/smolensk_minimap.github.io/index.html",
-    "main.838057fd.css.map": "/smolensk_minimap.github.io/static/css/main.838057fd.css.map",
-    "main.cd4de0ce.js.map": "/smolensk_minimap.github.io/static/js/main.cd4de0ce.js.map"
+    "main.css": "/static/css/main.fc6ffee0.css",
+    "main.js": "/static/js/main.9aee1482.js",
+    "static/media/sobor.jpg": "/static/media/sobor.e01753a33e04ab870db8.jpg",
+    "static/media/AubreyPro.otf": "/static/media/AubreyPro.e18c7dc2e744361faae9.otf",
+    "index.html": "/index.html",
+    "main.fc6ffee0.css.map": "/static/css/main.fc6ffee0.css.map",
+    "main.9aee1482.js.map": "/static/js/main.9aee1482.js.map"
   },
   "entrypoints": [
-    "static/css/main.838057fd.css",
-    "static/js/main.cd4de0ce.js"
+    "static/css/main.fc6ffee0.css",
+    "static/js/main.9aee1482.js"
   ]
 }
